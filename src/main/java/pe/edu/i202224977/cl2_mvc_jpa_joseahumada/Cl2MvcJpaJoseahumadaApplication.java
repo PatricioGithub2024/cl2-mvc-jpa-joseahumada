@@ -29,12 +29,12 @@ public class Cl2MvcJpaJoseahumadaApplication implements CommandLineRunner {
 		 */
 
 		System.out.println("-----------------------------------------------");
-		System.out.println("finAll() - 1era llamada MySQL");
+		System.out.println("1era llamada MySQL - INGRESA a Base de datos");
 		System.out.println("-----------------------------------------------");
 		Iterable<Film> iterable = filmRepository.findAll();
 		iterable.forEach((film) -> {
 			String message = String.format("%s:%s", film.getFilmId(), film.getTitle());
-			//si le quito el ln a "println" no hace salto de linea
+
 			System.out.print(message);
 
 		});
@@ -44,7 +44,7 @@ public class Cl2MvcJpaJoseahumadaApplication implements CommandLineRunner {
 		 */
 		System.out.println(" ");
 		System.out.println("-----------------------------------------------");
-		System.out.println("finAll() - 2da llamada Cache");
+		System.out.println("2da llamada Cache - Llama a cache de datos");
 		System.out.println("-----------------------------------------------");
 		Iterable<Film> iterable2 = filmRepository.findAll();
 		iterable2.forEach((film) -> {
@@ -59,13 +59,13 @@ public class Cl2MvcJpaJoseahumadaApplication implements CommandLineRunner {
 		 */
 		System.out.println(" ");
 		System.out.println("-----------------------------------------------");
-		System.out.println("save() - film");
+		System.out.println("save() - film - APLICO UN MODIFICAR");
 		System.out.println("-----------------------------------------------");
 		Optional<Film> optional = filmRepository.findById(1);
-		//presenta 2 lamda - correcto- no existente
+
 		optional.ifPresentOrElse(
 				(film) -> {
-					film.setTitle("BATMAN RETURN 7");
+					film.setTitle("BATMAN RETURN 8 - MODI");
 					filmRepository.save(film);
 				},
 				() -> {
@@ -78,12 +78,12 @@ public class Cl2MvcJpaJoseahumadaApplication implements CommandLineRunner {
 		 */
 		System.out.println(" ");
 		System.out.println("-----------------------------------------------");
-		System.out.println("finAll() - 4ta llamada Cache");
+		System.out.println("4ta llamada Cache - Llama a cache de datos ACTUALES");
 		System.out.println("-----------------------------------------------");
 		Iterable<Film> iterable3 = filmRepository.findAll();
 		iterable3.forEach((film) -> {
 			String message = String.format("%s:%s", film.getFilmId(), film.getTitle());
-			//si le quito el ln a "println" no hace salto de linea
+
 			System.out.print(message);
 
 		});
